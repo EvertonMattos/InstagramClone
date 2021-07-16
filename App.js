@@ -7,6 +7,9 @@ import Landing from "./components/auth/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Main from "./components/Main";
+import Add from "./components/Main/Add";
+import Save from "./components/Main/Save";
+
 import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
 import rootReducers from "./redux/reducers";
@@ -46,7 +49,7 @@ const App = () => {
   );
   const Lougout = () => (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Landing">
         <Stack.Screen
           name="Landing"
           component={Landing}
@@ -60,12 +63,14 @@ const App = () => {
   const LoggendIn = () => (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName="Main">
           <Stack.Screen
             name="Main"
             component={Main}
             options={{ headerShown: false }}
           />
+          <Stack.Screen name="Add" component={Add} />
+          <Stack.Screen name="Save" component={Save} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
